@@ -24,7 +24,7 @@ function parseTimeInput(val: string): number {
 export const TimeEntryForm = () => {
   const projects = useProjectsStore((s) => s.projects);
   const addEntry = useTimeEntriesStore((s) => s.add);
-  const loadToday = useTimeEntriesStore((s) => s.loadToday);
+  const loadWeek = useTimeEntriesStore((s) => s.loadWeek);
 
   const [projectId, setProjectId] = useState('');
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
@@ -60,7 +60,7 @@ export const TimeEntryForm = () => {
 
     setDescription('');
     setEndTime(toTimeInput(parseTimeInput(startTime) + 60));
-    loadToday();
+    loadWeek();
   };
 
   return (
