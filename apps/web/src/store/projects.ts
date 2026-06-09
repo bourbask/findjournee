@@ -18,12 +18,11 @@ export const useProjectsStore = create<ProjectsState>((set, get) => ({
 
   load: async () => {
     set({ loading: true });
-    const projects = await db.projects
-      .where('archived')
-      .equals(0)
+    const all = await db.projects
+      .orderBy('createdAt')
       .reverse()
-      .sortBy('createdAt');
-    set({ projects, loading: false });
+      .toArray();
+    set({ projects: all.filter((p) => !p.archived), loading: false });
   },
 
   add: async (name: string, color?: string) => {

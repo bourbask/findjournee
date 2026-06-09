@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useProjectsStore } from '@/store/projects';
 
 export const ProjectList = () => {
@@ -6,22 +6,12 @@ export const ProjectList = () => {
   const projects = useProjectsStore((s) => s.projects);
   const addProject = useProjectsStore((s) => s.add);
 
-  const handleAdd = useCallback(async () => {
+  const handleAdd = () => {
     const name = newName.trim();
     if (!name) return;
-    await addProject(name);
+    addProject(name);
     setNewName('');
-  }, [newName, addProject]);
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleAdd();
-      }
-    },
-    [handleAdd],
-  );
+  };
 
   return (
     <div className="rounded-card border border-border bg-surface p-4 shadow-sm">
@@ -34,7 +24,12 @@ export const ProjectList = () => {
           type="text"
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              handleAdd();
+            }
+          }}
           placeholder="Nouveau projet..."
           inputMode="text"
           autoComplete="off"
@@ -44,7 +39,7 @@ export const ProjectList = () => {
           type="button"
           disabled={!newName.trim()}
           onClick={handleAdd}
-          className="min-h-[48px] cursor-pointer rounded-lg bg-primary-600 px-5 text-base font-medium text-white transition-colors hover:bg-primary-700 disabled:opacity-40"
+          className="min-h-[48px] touch-manipulation cursor-pointer rounded-lg bg-primary-600 px-5 text-base font-medium text-white transition-colors hover:bg-primary-700 disabled:opacity-40"
         >
           +
         </button>
