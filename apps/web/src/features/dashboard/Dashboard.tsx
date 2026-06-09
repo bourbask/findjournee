@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { TimeEntryForm } from '@/features/entries/components/TimeEntryForm';
 import { WeekView } from '@/features/entries/components/WeekView';
+import { ProjectList } from '@/features/projects/components/ProjectList';
 import { ExportButton } from '@/features/export/components/ExportButton';
 import { useProjectsStore } from '@/store/projects';
 import { useTimeEntriesStore } from '@/store/timeEntries';
@@ -21,7 +22,8 @@ export const Dashboard = () => {
           <WeekView />
         </section>
 
-        <aside className="md:w-1/3">
+        <aside className="flex flex-col gap-4 md:w-1/3">
+          <ProjectList />
           <TimeEntryForm />
         </aside>
       </div>
