@@ -4,6 +4,12 @@ build/
 coverage/
 .turbo/
 
+# TypeScript build artifacts (when declaration files are emitted)
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
 # Env
 .env
 .env.*.local
