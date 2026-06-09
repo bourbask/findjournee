@@ -1,0 +1,28 @@
+{
+  "name": "findjournee",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fin'djournée — Gestion de projet et suivi de temps offline-first",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "packageManager": "yarn@4.13.0",
+  "scripts": {
+    "web": "yarn workspace @findjournee/web run dev",
+    "build": "yarn workspace @findjournee/web run build",
+    "preview": "yarn workspace @findjournee/web run preview",
+    "test": "yarn workspaces foreach -A run test",
+    "test:web": "yarn workspace @findjournee/web run test",
+    "lint": "yarn workspaces foreach -A run lint",
+    "lint:web": "yarn workspace @findjournee/web run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "typecheck": "yarn workspaces foreach -A run typecheck",
+    "clean": "yarn workspaces foreach -A run clean"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3",
+    "typescript": "^5.9.3"
+  }
+}

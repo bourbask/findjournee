@@ -1,0 +1,31 @@
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+
+# Env
+.env
+.env.*.local
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test
+junit.xml
+test-report.html
+playwright-report/
+test-results/
