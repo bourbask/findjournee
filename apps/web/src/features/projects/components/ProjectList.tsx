@@ -37,9 +37,10 @@ export const ProjectList = () => {
         />
         <button
           type="button"
-          disabled={!newName.trim()}
           onClick={handleAdd}
-          className="min-h-[48px] touch-manipulation cursor-pointer rounded-lg bg-primary-600 px-5 text-base font-medium text-white transition-colors hover:bg-primary-700 disabled:opacity-40"
+          className={`min-h-[48px] touch-manipulation cursor-pointer rounded-lg px-5 text-base font-medium text-white transition-colors hover:bg-primary-700 ${
+            newName.trim() ? 'bg-primary-600' : 'bg-primary-300'
+          }`}
         >
           +
         </button>
