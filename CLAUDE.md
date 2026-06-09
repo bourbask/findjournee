@@ -29,9 +29,25 @@ yarn format   # Prettier
 ## Project structure
 
 ```
-apps/web/      → Main PWA application
+apps/web/      → Main PWA application (Vite + React + Tailwind)
 packages/ui/   → Shared UI components (Tailwind)
 docs/          → Project documentation
+```
+
+## Web app structure
+
+```
+apps/web/src/
+├── components/       → Shared UI (Button, Card, etc.)
+├── features/         → Feature-based modules
+│   └── dashboard/    → Dashboard feature (Timer, etc.)
+├── hooks/            → Shared hooks (useOnlineStatus)
+├── lib/              → Services (theme, i18n)
+├── store/            → Zustand stores
+├── db/               → Dexie.js (IndexedDB) definitions
+├── App.tsx           → Root component (routes)
+├── main.tsx          → Entry point
+└── index.css         → Tailwind + CSS variables + theme
 ```
 
 ## Code conventions
