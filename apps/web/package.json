@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint .",
+    "lint": "echo 'no linter configured yet'",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },

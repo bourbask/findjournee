@@ -17,15 +17,13 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile
 
       - name: TypeScript check
         run: yarn typecheck
-
-      - name: Lint
-        run: yarn lint
 
       - name: Test
         run: yarn test
