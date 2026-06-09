@@ -43,7 +43,10 @@ function getSunday(d: Date): Date {
 }
 
 function formatDate(d: Date): string {
-  return d.toISOString().slice(0, 10);
+  const y = d.getFullYear();
+  const m = (d.getMonth() + 1).toString().padStart(2, '0');
+  const day = d.getDate().toString().padStart(2, '0');
+  return `${y}-${m}-${day}`;
 }
 
 export const useTimeEntriesStore = create<TimeEntriesState>((set, get) => ({

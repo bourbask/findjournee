@@ -27,7 +27,13 @@ export const TimeEntryForm = () => {
   const loadWeek = useTimeEntriesStore((s) => s.loadWeek);
 
   const [projectId, setProjectId] = useState('');
-  const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(() => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  });
   const [startTime, setStartTime] = useState('08:00');
   const [endTime, setEndTime] = useState('10:00');
   const [description, setDescription] = useState('');

@@ -79,9 +79,9 @@ export const WeekView = () => {
 
       <div className="flex flex-col gap-3">
         {weekDays.map((day, i) => {
-          const date = new Date(day.date + 'T00:00:00');
+          const date = parseDate(day.date);
           const isToday =
-            formatDate(new Date()) === day.date;
+            formatDateLocal(new Date()) === day.date;
           return (
             <div key={day.date} className="flex items-center gap-3">
               <span
@@ -131,7 +131,7 @@ export const WeekView = () => {
                 day.entries.length > 0 && (
                   <div key={day.date}>
                     <p className="mb-1 text-xs font-medium text-text-secondary">
-                      {DAY_LABELS[new Date(day.date + 'T00:00:00').getDay() === 0 ? 6 : new Date(day.date + 'T00:00:00').getDay() - 1]}{' '}
+                      {DAY_LABELS[parseDate(day.date).getDay() === 0 ? 6 : parseDate(day.date).getDay() - 1]}{' '}
                       {day.date}
                     </p>
                     {day.entries.map((e) => (
@@ -158,6 +158,14 @@ export const WeekView = () => {
   );
 };
 
-function formatDate(d: Date): string {
-  return d.toISOString().slice(0, 10);
+function formatDateLocal(d: Date): string {
+  const y = d.getFullYear();
+  const m = (d.getMonth() + 1).toString().padStart(2, '0');
+  const day = d.getDate().toString().padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function parseDate(s: string): Date {
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y!, m! - 1, d!);
 }
