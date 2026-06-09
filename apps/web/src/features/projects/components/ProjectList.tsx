@@ -15,7 +15,7 @@ export const ProjectList = () => {
 
   return (
     <div className="rounded-card border border-border bg-surface p-4 shadow-sm">
-      <h3 className="mb-3 text-sm font-medium text-text-secondary uppercase tracking-wide">
+      <h3 className="mb-3 text-sm font-medium uppercase tracking-wide text-text-secondary">
         Projets
       </h3>
 
@@ -25,14 +25,14 @@ export const ProjectList = () => {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           placeholder="Nouveau projet..."
-          className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary placeholder:text-text-secondary"
+          className="min-h-[48px] flex-1 rounded-lg border-2 border-border bg-surface px-4 text-base text-text-primary placeholder:text-text-secondary"
         />
         <button
           type="submit"
           disabled={!newName.trim()}
-          className="cursor-pointer rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700 disabled:opacity-40"
+          className="min-h-[48px] cursor-pointer rounded-lg bg-primary-600 px-5 text-base font-medium text-white transition-colors hover:bg-primary-700 disabled:opacity-40"
         >
-          Ajouter
+          +
         </button>
       </form>
 
@@ -40,18 +40,18 @@ export const ProjectList = () => {
         {projects.map((p) => (
           <li
             key={p.id}
-            className="rounded-md px-3 py-2 text-sm text-text-primary transition-colors hover:bg-surface-hover"
+            className="min-h-[44px] cursor-pointer rounded-lg px-4 py-3 text-base text-text-primary transition-colors hover:bg-surface-hover active:bg-surface-hover"
           >
             <span
-              className="mr-2 inline-block h-2 w-2 rounded-full"
+              className="mr-3 inline-block h-3 w-3 rounded-full"
               style={{ backgroundColor: p.color }}
             />
             {p.name}
           </li>
         ))}
         {projects.length === 0 && (
-          <li className="py-4 text-center text-sm text-text-secondary">
-            Aucun projet. Créez-en un pour commencer.
+          <li className="py-8 text-center text-base text-text-secondary">
+            Aucun projet pour le moment.
           </li>
         )}
       </ul>

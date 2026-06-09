@@ -33,32 +33,30 @@ export const Timer = () => {
   const mainLabel = elapsed === 0 ? 'Démarrer' : isRunning ? 'Pause' : 'Reprendre';
 
   return (
-    <div className="rounded-card border border-border bg-surface p-6 shadow-sm">
-      <div className="mb-4">
-        <select
-          value={activeId ?? ''}
-          onChange={(e) => setActive(e.target.value || null)}
-          className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-text-primary"
-        >
-          <option value="">Sélectionner un projet...</option>
-          {projects.map((p) => (
-            <option key={p.id} value={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="rounded-card border border-border bg-surface p-4 shadow-sm md:p-6">
+      <select
+        value={activeId ?? ''}
+        onChange={(e) => setActive(e.target.value || null)}
+        className="mb-4 w-full rounded-lg border-2 border-border bg-surface px-4 py-3 text-base text-text-primary"
+      >
+        <option value="">Choisir un projet...</option>
+        {projects.map((p) => (
+          <option key={p.id} value={p.id}>
+            {p.name}
+          </option>
+        ))}
+      </select>
 
-      <div className="mb-4 text-center">
-        <span className="font-mono text-4xl font-semibold tracking-wider tabular-nums">
+      <div className="mb-6 text-center">
+        <span className="font-mono text-5xl font-semibold tracking-wider tabular-nums md:text-6xl">
           {formatDuration(elapsed)}
         </span>
       </div>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
         <button
           onClick={handleMainClick}
-          className="cursor-pointer rounded-lg bg-primary-600 px-6 py-2 font-medium text-white transition-colors hover:bg-primary-700"
+          className="min-h-[52px] cursor-pointer rounded-xl bg-primary-600 px-8 text-lg font-medium text-white transition-colors hover:bg-primary-700 active:bg-primary-800"
         >
           {mainLabel}
         </button>
@@ -66,7 +64,7 @@ export const Timer = () => {
         <button
           onClick={handleStop}
           disabled={elapsed === 0}
-          className="cursor-pointer rounded-lg border border-red-200 bg-surface px-6 py-2 font-medium text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-40"
+          className="min-h-[52px] cursor-pointer rounded-xl border-2 border-red-200 bg-surface px-8 text-lg font-medium text-red-600 transition-colors hover:bg-red-50 active:bg-red-100 disabled:cursor-not-allowed disabled:opacity-40"
         >
           Stop
         </button>
